@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jump Together — Premium 2D Multiplayer Platformer</title>
+    <style>
+      :root { color-scheme: dark; }
+      * { box-sizing: border-box; }
+      body { margin: 0; font-family: Inter, Arial, sans-serif; background: radial-gradient(circle at top, #15213d 0%, #050816 70%); color: #f8fafc; }
+      .app { display: grid; grid-template-columns: 360px 1fr; min-height: 100vh; }
+      .panel { background: rgba(7, 12, 24, 0.96); padding: 24px; border-right: 1px solid rgba(255,255,255,0.08); backdrop-filter: blur(18px); }
+      .hero { padding: 16px; border-radius: 20px; background: linear-gradient(135deg, #4f46e5, #0ea5e9); box-shadow: 0 18px 40px rgba(14, 165, 233, 0.18); margin-bottom: 16px; }
+      .hero h1 { margin: 0 0 8px; font-size: 24px; }
+      .hero p { margin: 0; opacity: 0.95; line-height: 1.5; }
+      .card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 14px; margin-bottom: 12px; }
+      .panel input, .panel button { width: 100%; margin-bottom: 10px; padding: 10px 12px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.12); font-size: 14px; }
+      .panel button { cursor: pointer; background: linear-gradient(135deg, #3b82f6, #2563eb); color: white; font-weight: 700; }
+      .panel button.secondary { background: linear-gradient(135deg, #34d399, #10b981); }
+      .row { display: flex; gap: 8px; }
+      .game-shell { position: relative; display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 24px; }
+      canvas { border: 2px solid rgba(255,255,255,0.15); border-radius: 24px; background: linear-gradient(180deg, #1d4ed8 0%, #020617 100%); box-shadow: 0 22px 70px rgba(0,0,0,0.3); width: min(100%, 1280px); height: auto; }
+      .hud, .mobile-controls { position: absolute; }
+      .hud { top: 32px; left: 32px; background: rgba(2,6,23,0.7); padding: 12px 14px; border-radius: 14px; font-size: 14px; border: 1px solid rgba(255,255,255,0.1); }
+      .mobile-controls { bottom: 32px; right: 32px; display: flex; gap: 8px; }
+      .mobile-controls button { width: 58px; height: 58px; border-radius: 50%; padding: 0; font-size: 22px; }
+      #playerList { padding-left: 18px; margin: 8px 0 0; }
+      #status { font-size: 13px; opacity: 0.9; }
+      @media (max-width: 960px) { .app { grid-template-columns: 1fr; } .panel { border-right: 0; border-bottom: 1px solid rgba(255,255,255,0.08); } .game-shell { padding: 10px; } }
+    </style>
+  </head>
+  <body>
+    <div class="app">
+      <div class="panel">
+        <div class="hero">
+          <h1>Jump Together</h1>
+          <p>Premium multiplayer platformer with charming visuals, room-based play, and a polished lobby experience.</p>
+        </div>
+        <div class="card">
+          <input id="nickname" placeholder="Nickname" value="Player" />
+          <input id="roomCode" placeholder="Room Code" />
+          <input id="password" placeholder="Password (optional)" />
+          <div class="row">
+            <button id="createBtn">Create Room</button>
+            <button id="joinBtn" class="secondary">Join Room</button>
+          </div>
+          <button id="startBtn">Start Game</button>
+          <div id="status">Preparing your next jump...</div>
+        </div>
+        <div class="card">
+          <strong>Players</strong>
+          <ul id="playerList"></ul>
+        </div>
+        <div class="card">
+          <strong>Controls</strong>
+          <p>Desktop: A / D / Space</p>
+          <p>Mobile: Tap the on-screen buttons</p>
+        </div>
+      </div>
+      <div class="game-shell">
+        <div class="hud" id="hud">Status: Lobby</div>
+        <div class="mobile-controls">
+          <button data-action="left">◀</button>
+          <button data-action="jump">⤴</button>
+          <button data-action="right">▶</button>
+        </div>
+        <canvas id="game" width="1280" height="720"></canvas>
+      </div>
+    </div>
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>

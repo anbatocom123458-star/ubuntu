@@ -1,0 +1,12 @@
+export const TICK_RATE = 20;
+export const TICK_INTERVAL_MS = 1000 / TICK_RATE;
+export const DEFAULT_ROOM_SIZE = 4;
+export const GAME_WIDTH = 1280;
+export const GAME_HEIGHT = 720;
+export const PLAYER_SIZE = { width: 36, height: 54 };
+export const GRAVITY = 0.65;
+export const MOVE_SPEED = 4.8;
+export const JUMP_SPEED = 12;
+export const MAX_FALL_SPEED = 12;
+export const FLOOR_Y = GAME_HEIGHT - 100;
+export const PLATFORM_HEIGHT = 18;
