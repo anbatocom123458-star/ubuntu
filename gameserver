@@ -1,0 +1,776 @@
+Được luôn Huân 😄. Mình sẽ viết theo kiểu Software Requirements Specification (SRS) như các studio game. Prompt này đủ chi tiết để AI có thể tạo một dự án lớn, không chỉ là demo.
+
+⸻
+
+PROJECT PROMPT
+
+Jump Together Online Engine
+
+Version 1.0
+
+Multiplayer 2D Platform Game
+
+⸻
+
+1. Project Overview
+
+Mục tiêu là xây dựng một game Platformer Multiplayer 2D hoạt động hoàn toàn trên nền web.
+
+Game phải có kiến trúc tương tự các game multiplayer hiện đại (Free Fire, Liên Quân, Brawl Stars…) nhưng áp dụng cho game platformer 2D.
+
+Không phải demo.
+
+Không phải prototype.
+
+Đây phải là một dự án production-ready có thể triển khai thật.
+
+⸻
+
+2. Deployment
+
+Frontend
+
+Deploy lên
+
+* Vercel
+* hoặc GitHub Pages
+
+Backend
+
+Deploy lên
+
+Railway
+
+Server phải hoạt động 24/7.
+
+⸻
+
+3. Technology
+
+Frontend
+
+* HTML5
+* CSS3
+* JavaScript ES2024
+* Canvas API
+* Socket.IO Client
+
+Backend
+
+* NodeJS 22+
+* Express
+* Socket.IO
+* UUID
+
+Build
+
+* Docker
+* Dockerfile
+* Railway
+* GitHub Actions
+
+Không sử dụng Firebase.
+
+Không sử dụng Supabase.
+
+Không sử dụng Phaser.
+
+Không sử dụng Unity.
+
+Không sử dụng Godot.
+
+Toàn bộ Engine phải tự viết bằng JavaScript.
+
+⸻
+
+4. Architecture
+
+Client
+↓
+Input
+↓
+Prediction
+↓
+Interpolation
+↓
+Socket.IO
+↓
+Railway Server
+↓
+Physics
+↓
+Collision
+↓
+Validation
+↓
+Broadcast
+↓
+Client
+↓
+Rendering
+
+Server là Authoritative Server.
+
+Client không được quyết định:
+
+* Position
+* Collision
+* Win
+* Respawn
+* Checkpoint
+
+Server quyết định tất cả.
+
+⸻
+
+5. Multiplayer
+
+Realtime Multiplayer.
+
+WebSocket.
+
+Socket.IO.
+
+Server Tick
+
+20 Tick/s
+
+Client
+
+60 FPS
+
+Có
+
+Client Prediction
+
+Server Reconciliation
+
+Interpolation
+
+Extrapolation
+
+Lag Compensation
+
+Ping Monitor
+
+FPS Counter
+
+⸻
+
+6. Room System
+
+Có hệ thống phòng.
+
+Player có thể:
+
+Create Room
+
+Join Room
+
+Private Room
+
+Public Room
+
+Room Code
+
+Password
+
+Ví dụ
+
+Room
+ABCD1234
+Password
+123456
+
+Server lưu
+
+Room
+Players
+Map
+Checkpoint
+Timer
+GameState
+Physics
+
+Nếu chủ phòng thoát
+
+↓
+
+Host Migration hoặc đóng phòng an toàn.
+
+⸻
+
+7. Character
+
+Animation
+
+Idle
+
+Run
+
+Jump
+
+Fall
+
+Land
+
+Respawn
+
+Win
+
+Lose
+
+Skin System
+
+Hitbox
+
+Shadow
+
+Particle
+
+⸻
+
+8. Physics Engine
+
+Tự xây dựng Physics Engine.
+
+Không dùng thư viện.
+
+Bao gồm
+
+Gravity
+
+Velocity
+
+Acceleration
+
+Jump
+
+Double Jump
+
+Wall Slide
+
+Wall Jump
+
+Friction
+
+Air Resistance
+
+Moving Platform
+
+Falling Platform
+
+Collision Detection
+
+Collision Resolution
+
+Checkpoint
+
+Respawn
+
+Death Zone
+
+Goal
+
+⸻
+
+9. Controls
+
+Desktop
+
+A
+
+D
+
+Space
+
+ESC
+
+R
+
+Mobile
+
+Joystick trái
+
+Jump Button
+
+Pause Button
+
+Joystick phải để dành mở rộng.
+
+Joystick phải hỗ trợ đa điểm (multi-touch).
+
+⸻
+
+10. Camera
+
+Camera Follow
+
+Smooth Camera
+
+Dead Zone
+
+Shake
+
+Zoom
+
+Camera Limit
+
+Parallax
+
+⸻
+
+11. Obstacles
+
+Spike
+
+Saw
+
+Laser
+
+Moving Platform
+
+Rotating Platform
+
+Collapse Platform
+
+Lava
+
+Water
+
+Wind
+
+Ice
+
+Spring
+
+Door
+
+Key
+
+Portal
+
+Teleport
+
+Checkpoint Flag
+
+Finish Flag
+
+⸻
+
+12. Rendering
+
+Canvas API.
+
+60 FPS.
+
+requestAnimationFrame.
+
+Sprite Animation.
+
+Particle Engine.
+
+Lighting.
+
+Camera System.
+
+Layer Rendering.
+
+Background.
+
+Foreground.
+
+UI Layer.
+
+Effect Layer.
+
+⸻
+
+13. UI
+
+Main Menu
+
+Play
+
+Create Room
+
+Join Room
+
+Settings
+
+Nickname
+
+Sound
+
+Music
+
+Fullscreen
+
+Language
+
+Ingame
+
+Health
+
+FPS
+
+Ping
+
+Timer
+
+Checkpoint
+
+Coins
+
+Room Code
+
+Player Count
+
+Latency
+
+⸻
+
+14. Networking
+
+Socket.IO.
+
+Packets
+
+Player Join
+
+Player Leave
+
+Move
+
+Jump
+
+Ping
+
+Respawn
+
+Checkpoint
+
+Finish
+
+Game Start
+
+Game End
+
+Heartbeat
+
+Reconnect
+
+Delta Sync
+
+State Sync
+
+⸻
+
+15. Optimization
+
+Object Pool
+
+Sprite Cache
+
+Delta Compression
+
+Image Cache
+
+No Memory Leak
+
+Lazy Loading
+
+Asset Compression
+
+Mobile Optimization
+
+Desktop Optimization
+
+Network Optimization
+
+⸻
+
+16. Security
+
+Authoritative Server
+
+Speed Hack Detection
+
+Teleport Detection
+
+Packet Validation
+
+Flood Protection
+
+Rate Limit
+
+Anti Cheat
+
+Input Validation
+
+No Trust Client
+
+⸻
+
+17. Audio
+
+Background Music
+
+Jump
+
+Coin
+
+Death
+
+Checkpoint
+
+Victory
+
+Lose
+
+Button
+
+Slider Volume
+
+Mute
+
+⸻
+
+18. Game Flow
+
+Player mở web
+
+↓
+
+Create Room
+
+↓
+
+Room Code
+
+↓
+
+Password
+
+↓
+
+Player thứ hai Join
+
+↓
+
+Loading
+
+↓
+
+Countdown
+
+↓
+
+Game Start
+
+↓
+
+Realtime Multiplayer
+
+↓
+
+Checkpoint
+
+↓
+
+Goal
+
+↓
+
+Victory
+
+↓
+
+Leaderboard
+
+⸻
+
+19. Folder Structure
+
+jump-together/
+client/
+assets/
+sprites/
+audio/
+maps/
+fonts/
+network/
+render/
+physics/
+animation/
+camera/
+joystick/
+ui/
+server/
+rooms/
+players/
+physics/
+collision/
+tick/
+network/
+shared/
+constants/
+utils/
+protocol/
+.github/
+workflows/
+Dockerfile
+railway.toml
+README.md
+LICENSE
+
+⸻
+
+20. Railway
+
+Server phải chạy trên Railway.
+
+Dockerized.
+
+Health Check.
+
+Auto Restart.
+
+Environment Variables.
+
+WebSocket.
+
+Railway Volume (nếu cần).
+
+Railway Logs.
+
+Railway Metrics.
+
+⸻
+
+21. GitHub Actions
+
+Khi Push
+
+↓
+
+Lint
+
+↓
+
+Test
+
+↓
+
+Build
+
+↓
+
+Docker Build
+
+↓
+
+Deploy Railway
+
+↓
+
+Deploy Frontend
+
+↓
+
+Thông báo Discord
+
+Nếu Build lỗi
+
+↓
+
+Rollback.
+
+⸻
+
+22. Documentation
+
+Sinh đầy đủ:
+
+README.md
+
+Installation Guide
+
+Deployment Guide
+
+Railway Guide
+
+Architecture Diagram
+
+Networking Diagram
+
+Physics Diagram
+
+API Documentation
+
+⸻
+
+23. Code Standard
+
+* ES2024 Modules
+* Code chia module rõ ràng.
+* Không file nào quá 300 dòng nếu có thể.
+* Có JSDoc.
+* Có comment cho logic phức tạp.
+* Không hardcode.
+* Dễ mở rộng.
+* Tuân thủ SOLID và Clean Architecture ở mức phù hợp.
+* Tách riêng Client, Server và Shared.
+
+⸻
+
+24. Future Expansion
+
+Engine phải được thiết kế để sau này chỉ cần thay đổi gameplay là có thể tạo:
+
+* Battle Royale
+* Sandbox
+* Survival
+* Racing
+* Shooter
+* RPG
+* Tower Defense
+
+mà không cần viết lại Networking Engine.
+
+⸻
+
+25. Deliverables
+
+AI phải tạo đầy đủ:
+
+* ✅ Toàn bộ source code frontend.
+* ✅ Toàn bộ source code backend.
+* ✅ Multiplayer Engine.
+* ✅ Physics Engine.
+* ✅ Collision Engine.
+* ✅ Room System.
+* ✅ Password Room.
+* ✅ Joystick Mobile.
+* ✅ PC Controls.
+* ✅ Camera System.
+* ✅ Animation System.
+* ✅ Particle System.
+* ✅ Audio System.
+* ✅ Dockerfile.
+* ✅ railway.toml.
+* ✅ GitHub Actions.
+* ✅ README.md.
+* ✅ Hướng dẫn deploy từng bước.
+* ✅ Tối ưu cho iPhone, Android và Desktop.
+* ✅ Có thể chạy ngay sau khi clone và triển khai lên Railway + Vercel/GitHub Pages.
+
+⸻
+
+⭐ Yêu cầu cuối cùng
+
+Không tạo một bản demo đơn giản.
+
+Hãy xây dựng dự án theo kiến trúc của một game multiplayer thương mại quy mô nhỏ, với mã nguồn sạch, khả năng mở rộng cao, dễ bảo trì và có thể làm nền tảng cho các phiên bản sau.
+
+Thiết kế toàn bộ hệ thống sao cho sau này có thể nâng cấp từ 2 người chơi lên hàng chục người chơi, bổ sung thêm map, chế độ chơi, vật phẩm và các tính năng mới mà không cần viết lại kiến trúc mạng hoặc engine cốt lõi.
